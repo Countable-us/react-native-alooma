@@ -1,4 +1,4 @@
-package com.countable;
+package com.countable.alooma;
 
 import java.util.Arrays;
 import java.util.Collections;

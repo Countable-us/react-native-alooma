@@ -33,6 +33,6 @@ repositories {
 dependencies {
     compile 'com.facebook.react:react-native:+'
     compile "com.github.aloomaio.androidsdk:androidsdk:6.0.2"
-    compile 'com.google.android.gms:play-services-gcm:9.4.0+'
+    compile 'com.google.android.gms:play-services-gcm:11.0.4'
 }
   

@@ -16,7 +16,8 @@
 RCT_EXPORT_MODULE(RNAlooma)
 
 RCT_EXPORT_METHOD(sharedInstanceWithToken:(NSString *)apiToken) {
-    [Alooma sharedInstanceWithToken:apiToken];
+   [Alooma sharedInstanceWithToken:apiToken serverURL:@"inputs.alooma.com"
+        ];
     alooma = [Alooma sharedInstance];
     // React Native runs too late to listen for applicationDidBecomeActive,
     // so we expose the private method and call it explicitly here,
@@ -47,7 +48,7 @@ RCT_EXPORT_METHOD(flush) {
 
 // create Alias
 RCT_EXPORT_METHOD(createAlias:(NSString *)old_id) {
-    [alooma createAlias:old_id forDistinctID:mixpanel.distinctId];
+    [alooma createAlias:old_id forDistinctID:alooma.distinctId];
 }
 
 // identify

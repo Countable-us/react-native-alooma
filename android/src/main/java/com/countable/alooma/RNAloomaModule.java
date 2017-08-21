@@ -1,5 +1,5 @@
 
-package com.countable;
+package com.countable.alooma;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -16,6 +16,8 @@ import com.github.aloomaio.androidsdk.aloomametrics.AloomaAPI;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.util.Log;
+
 
 
 public class RNAloomaModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
@@ -26,6 +28,8 @@ public class RNAloomaModule extends ReactContextBaseJavaModule implements Lifecy
   public RNAloomaModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+
+    reactContext.addLifecycleEventListener(this);
   }
 
   @Override
@@ -35,8 +39,7 @@ public class RNAloomaModule extends ReactContextBaseJavaModule implements Lifecy
 
     @ReactMethod
     public void sharedInstanceWithToken(final String token) {
-        alooma = AloomaAPI.getInstance(reactContext, token);
-
+      alooma = AloomaAPI.getInstance(reactContext, token);
     }
 
    static JSONObject reactToJSON(ReadableMap readableMap) throws JSONException {
@@ -112,9 +115,11 @@ public class RNAloomaModule extends ReactContextBaseJavaModule implements Lifecy
             obj = RNAloomaModule.reactToJSON(properties);
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.d("Call to alooma properties failed" + e.toString());
         }
-
+        Log.d("Tracking " + name);
         alooma.track(name, obj);
+
     }
 
 
