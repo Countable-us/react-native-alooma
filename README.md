@@ -9,12 +9,17 @@
 - Add `<uses-permission android:name="android.permission.INTERNET" /> `.
   More info: <uses-permission android:name="android.permission.INTERNET" /> 
 
+### Linking
+
+`react-native link react-native-alooma
+
 
 ## Usage
 ```javascript
-import RNAlooma from 'react-native-alooma';
+import Alooma from 'react-native-alooma';
 
 // TODO: What to do with the module?
-RNAlooma;
+Alooma.sharedInstanceWithToken("Your token")
+Alooma.track('an event')
 ```
   
