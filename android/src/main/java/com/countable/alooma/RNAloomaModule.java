@@ -22,6 +22,8 @@ import android.util.Log;
 
 public class RNAloomaModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
+  private static final String LOG_TAG = "REACT_NATIVE_ALOOMA";
+
   private final ReactApplicationContext reactContext;
   AloomaAPI alooma;
 
@@ -115,9 +117,9 @@ public class RNAloomaModule extends ReactContextBaseJavaModule implements Lifecy
             obj = RNAloomaModule.reactToJSON(properties);
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.d("Call to alooma properties failed" + e.toString());
+            Log.d(LOG_TAG, "Call to alooma properties failed" + e.toString());
         }
-        Log.d("Tracking " + name);
+        Log.d(LOG_TAG, "Tracking " + name);
         alooma.track(name, obj);
 
     }
