@@ -16,7 +16,7 @@
 RCT_EXPORT_MODULE(RNAlooma)
 
 RCT_EXPORT_METHOD(sharedInstanceWithToken:(NSString *)apiToken) {
-   [Alooma sharedInstanceWithToken:apiToken serverURL:@"inputs.alooma.com"
+   [Alooma sharedInstanceWithToken:apiToken serverURL:@"https://inputs.alooma.com"
         ];
     alooma = [Alooma sharedInstance];
     // React Native runs too late to listen for applicationDidBecomeActive,
