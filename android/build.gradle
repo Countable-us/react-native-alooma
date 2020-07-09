@@ -11,13 +11,15 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
+def DEFAULT_COMPILE_SDK_VERSION = 28
+def DEFAULT_TARGET_SDK_VERSION = 26
+
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion rootProject.hasProperty('targetSdkVersion') ? rootProject.targetSdkVersion : DEFAULT_TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
     }
@@ -31,8 +33,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile "com.github.aloomaio.androidsdk:androidsdk:6.0.2"
-    compile 'com.google.android.gms:play-services-gcm:11.0.4'
+    implementation 'com.facebook.react:react-native:+'
+    implementation "com.github.aloomaio.androidsdk:androidsdk:6.0.2"
+    implementation 'com.google.android.gms:play-services-gcm:11.0.4'
 }
   
